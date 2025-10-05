@@ -15,6 +15,8 @@ MOCK_CONFIG_DATA = {
 @pytest.fixture
 def client():
     """Create a Flask test client."""
+    # With the refactored app structure, we no longer need to patch the scheduler.
+    # The tests can now run in a clean environment without the background thread.
     main.app.config['TESTING'] = True
     main.app.config['WTF_CSRF_ENABLED'] = False # Disable CSRF for testing forms
 

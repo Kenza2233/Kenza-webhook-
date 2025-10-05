@@ -1,6 +1,2 @@
 [build]
   command = "pip install -r requirements.txt"
-  publish = "."
-
-[deploy]
-  command = "gunicorn main:app"

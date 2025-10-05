@@ -256,7 +256,8 @@ def run_scheduler():
 
 # --- MAIN EXECUTION ---
 if __name__ == "__main__":
+    # This block is for local development only.
+    # It starts the background scheduler and the Flask development server.
     scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
     scheduler_thread.start()
-
     app.run(host='0.0.0.0', port=5000)
