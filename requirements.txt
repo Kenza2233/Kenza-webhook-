@@ -5,3 +5,4 @@ schedule
 pytest
 pytest-mock
 flask
+gunicorn
