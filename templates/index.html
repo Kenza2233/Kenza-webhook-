@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Social Media Monitor</h1>
+            <p>Add a social media profile URL to start monitoring for new posts.</p>
+        </header>
+
+        <main>
+            <section class="add-link-form">
+                <h2>Add New Account</h2>
+                <form action="/add" method="post">
+                    <input type="url" name="url" placeholder="Enter profile URL (e.g., https://x.com/elonmusk)" required>
+                    <button type="submit">Add Account</button>
+                </form>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </section>
+
+            <section class="monitored-accounts">
+                <h2>Currently Monitored Accounts</h2>
+                <ul>
+                    {% for account in accounts %}
+                        <li>
+                            <span class="platform-badge {{ account.platform }}">{{ account.platform }}</span>
+                            <a href="{{ account.url }}" target="_blank">{{ account.url }}</a>
+                            <form action="/remove" method="post" style="display:inline;">
+                                <input type="hidden" name="url" value="{{ account.url }}">
+                                <button type="submit" class="remove-btn">Remove</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li>No accounts are being monitored yet.</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>The monitor checks for new posts every 5 minutes.</p>
+        </footer>
+    </div>
+</body>
+</html>

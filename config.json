@@ -1,19 +1,9 @@
 {
   "accounts": [
     {
-      "platform": "x",
-      "url": "https://x.com/elonmusk",
-      "last_seen_id": null
-    },
-    {
       "platform": "instagram",
-      "url": "https://www.instagram.com/nasa/",
+      "url": "https://www.instagram.com/google/",
       "last_seen_id": null
-    },
-    {
-        "platform": "tiktok",
-        "url": "https://www.tiktok.com/@zachking",
-        "last_seen_id": null
     }
   ]
 }

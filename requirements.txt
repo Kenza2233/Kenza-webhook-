@@ -4,3 +4,4 @@ lxml
 schedule
 pytest
 pytest-mock
+flask
